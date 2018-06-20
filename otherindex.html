@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">WCC</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+
+            <div class="jumbotron jumbotron-fluid ">
+                <div class="container text-center">
+                    <h1 class="display-3">Wind Chill Calculator</h1>
+                </div>
+                <div class="container col-md-3">
+                    <p></p>
+                    <div class="form-group">
+                        <label for="temp">Temperature (Celsius):</label><input onfocus="clearMe(this)" onfocusout="fillMe(this)" type="number" id="celsiustemp"  value=0 class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="temp">Temperature (Fahrenheit):</label><input type="number" id="temp"  onfocus="clearMe(this)" onfocusout="fillMe(this)" value=0 class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="speed">Wind Speed</label><input id="speed"  type="number" onfocus="clearMe(this)" onfocusout="fillMe(this)" value=0 class="form-control">
+                    </div>
+                    <button onclick="calcWindChill()" class="btn okay">Calculate Wind Chill</button>
+
+                    <br/><br/>
+                    <label for="windchill">Wind Chill:</label> <span id="windchill"></span>
+
+                </div>
+            </div>
+            
+    <script>
+        function calcWindChill()
+        {
+
+            //The formula:  w = 35.74 + 0.6215*t + (0.4275*t - 35.75)  *  v ^ 0.16;
+
+            var t = document.getElementById("temp").value;
+            var v = document.getElementById("speed").value;
+
+
+            var windChill =  35.74 + 0.6215*t + (0.4275*t - 35.75) * Math.pow(v, 0.16);
+
+          /*  if(theTemp=="" || windSpeed=="")
+            {
+                //Show dismissable alert
+                alert("Undefined temperature or img speed. Please enter the missing value to continue");
+            }*/
+
+            document.getElementById("windchill").innerHTML=windChill.toFixed(2);
+        }
+
+        function clearMe(theObject)
+        {
+            theObject.value="";
+        }
+
+        function fillMe(theObject)
+        {
+
+            if(theObject.value=="")
+                theObject.value=0;
+
+            var celsiusTemp = document.getElementById("celsiustemp").value;
+            var fahrenheitTemp = celsiusTemp * 1.8 + 32;
+            document.getElementById("temp").value = fahrenheitTemp;
+
+        }
+
+    </script>
+    <script src="js/bootstrap.js">
+
+    </script>
+</body>
+</html>
