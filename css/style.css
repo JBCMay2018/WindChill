@@ -1,0 +1,26 @@
+body{
+//    background-color:#80bfff;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(rgba(0, 64,250, 0.6), rgba(0, 0, 0, 0.6)),url("../img/wind.jpg");
+    background-position:center;
+    background-size:110%;
+}
+
+label,#windchill{
+    color:white;
+}
+.jumbotron-fluid
+{
+
+    background: linear-gradient(rgba(0, 64,250, 0.6), rgba(0, 0, 0, 0.6)),url("../img/wind.jpg");
+    background-position:center;
+}
+
+.okay
+{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    background-color:rgba(0,64,250,0.8);
+    color:white;
+}
